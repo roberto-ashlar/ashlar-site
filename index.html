@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ashlar — Productos de IA hechos para producción</title>
+<meta name="description" content="Ashlar es una empresa mexicana de software que diseña, construye y opera productos de inteligencia artificial. Creadores de Enkaja.">
+<meta property="og:title" content="Ashlar">
+<meta property="og:description" content="Ashlar es una empresa mexicana de software que diseña, construye y opera productos de inteligencia artificial. Creadores de Enkaja.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%2240%2040%20432%20432%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Crect%20x%3D%2240%22%20y%3D%2240%22%20width%3D%22432%22%20height%3D%22432%22%20fill%3D%22%23FFFFFF%22/%3E%3Cg%3E%3Cpolygon%20points%3D%2264.00%2C64.00%20248.50%2C64.00%20199.75%2C184.00%2064.00%2C184.00%22%20fill%3D%22%231F2328%22/%3E%3Cpolygon%20points%3D%22263.50%2C64.00%20448.00%2C64.00%20448.00%2C184.00%20312.25%2C184.00%22%20fill%3D%22%231F2328%22/%3E%3C/g%3E%3Cpolygon%20points%3D%22256.00%2C82.46%20297.25%2C184.00%20214.75%2C184.00%22%20fill%3D%22%233D8FB8%22/%3E%3Cg%3E%3Cpolygon%20points%3D%2264.00%2C196.00%20194.88%2C196.00%20146.12%2C316.00%2064.00%2C316.00%22%20fill%3D%22%231F2328%22/%3E%3Cpolygon%20points%3D%22317.12%2C196.00%20448.00%2C196.00%20448.00%2C316.00%20365.88%2C316.00%22%20fill%3D%22%231F2328%22/%3E%3Cpolygon%20points%3D%22209.88%2C196.00%20302.12%2C196.00%20350.88%2C316.00%20161.12%2C316.00%22%20fill%3D%22%231F2328%22/%3E%3C/g%3E%3Cg%3E%3Cpolygon%20points%3D%2264.00%2C328.00%20141.25%2C328.00%2092.50%2C448.00%2064.00%2C448.00%22%20fill%3D%22%231F2328%22/%3E%3Cpolygon%20points%3D%22370.75%2C328.00%20448.00%2C328.00%20448.00%2C448.00%20419.50%2C448.00%22%20fill%3D%22%231F2328%22/%3E%3Cpolygon%20points%3D%22156.25%2C328.00%20355.75%2C328.00%20404.50%2C448.00%20107.50%2C448.00%22%20fill%3D%22%231F2328%22/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  /* Ashlar brand system v1.0: four colours, used unevenly */
+  :root {
+    --ink: #1F2328;       /* type, mark, dark surfaces */
+    --mineral: #3D8FB8;   /* keystone, one accent per surface */
+    --slate: #6B7280;     /* secondary text, descriptors */
+    --paper: #FFFFFF;     /* backgrounds */
+    --ink-4: #F3F4F6;     /* Ink tint 4% */
+    --ink-8: #E5E7EB;     /* Ink tint 8% */
+    --slate-rev: #A3A9B3; /* descriptor on Ink, from the reversed lockup */
+    /* Enkaja keeps its own identity */
+    --enk-green: #12B67A;
+    --enk-coral: #FF6A3D;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: "Barlow", Arial, Helvetica, sans-serif; font-size: 18px; line-height: 1.6; color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4 { font-family: "Sora", Arial, Helvetica, sans-serif; font-weight: 600; margin: 0; }
+  p { margin: 0; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--mineral); outline-offset: 3px; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+
+  /* ---------- Lockup ---------- */
+  .lockup { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; color: var(--ink); }
+  .lockup-mark { width: 38px; height: 38px; flex: none; display: block; }
+  .lockup-text { display: flex; flex-direction: column; line-height: 1; }
+  .lockup-name { font-family: "Sora", Arial, sans-serif; font-weight: 600; font-size: 22px; letter-spacing: -0.4px; }
+  .lockup-desc { font-family: "Sora", Arial, sans-serif; font-weight: 600; font-size: 8.5px; letter-spacing: 2.2px; color: var(--slate); margin-top: 5px; }
+  .lockup.rev { color: var(--paper); }
+  .lockup.rev .lockup-desc { color: var(--slate-rev); }
+
+  /* ---------- Nav ---------- */
+  .nav-bar { border-bottom: 1px solid var(--ink-8); background: var(--paper); position: sticky; top: 0; z-index: 10; }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 84px; gap: 24px; }
+  .nav-right { display: flex; align-items: center; gap: 30px; font-size: 16px; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { text-decoration: none; color: var(--slate); }
+  .nav-links a:hover { color: var(--ink); }
+  .lang { display: flex; border: 1px solid var(--ink-8); border-radius: 3px; overflow: hidden; }
+  .lang button { font: 600 13px "Sora", Arial, sans-serif; letter-spacing: .5px; padding: 7px 11px; border: 0; background: var(--paper); color: var(--slate); cursor: pointer; }
+  .lang button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+  /* ---------- Buttons ---------- */
+  .btn { display: inline-block; text-decoration: none; font-weight: 600; font-size: 17px; padding: 14px 26px; border-radius: 3px; border: 1.5px solid var(--ink); transition: opacity .15s; }
+  .btn-solid { background: var(--ink); color: var(--paper); }
+  .btn-solid:hover { opacity: .85; }
+  .btn-line { color: var(--ink); background: transparent; }
+  .btn-line:hover { background: var(--ink-4); }
+
+  /* ---------- Hero ---------- */
+  .hero { display: grid; grid-template-columns: 1fr; gap: 0; padding-top: 120px; padding-bottom: 120px; }
+  .hero h1 { font-size: clamp(40px, 5.2vw, 64px); line-height: 1.06; letter-spacing: -1.6px; margin-bottom: 28px; max-width: 16ch; }
+  .hero .lead { font-size: 20px; line-height: 1.55; color: var(--slate); max-width: 48ch; margin-bottom: 40px; }
+  .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* ---------- Sections ---------- */
+  .section { padding: 112px 0; }
+  .tint { background: var(--ink-4); }
+  .h2 { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.12; letter-spacing: -0.8px; margin-bottom: 18px; }
+  .intro { color: var(--slate); font-size: 19px; max-width: 56ch; margin-bottom: 52px; }
+
+  /* ---------- Enkaja ---------- */
+  .enk { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .enk-name { font-family: "Sora", Arial, sans-serif; font-weight: 700; font-size: clamp(56px, 7vw, 88px); letter-spacing: -3px; line-height: .95; color: var(--enk-green); }
+  .enk-by { font-size: 16px; color: var(--slate); margin: 10px 0 30px; }
+  .enk h2 { font-size: clamp(26px, 2.8vw, 34px); line-height: 1.2; letter-spacing: -0.6px; margin-bottom: 20px; max-width: 20ch; }
+  .enk .body { max-width: 52ch; margin-bottom: 36px; }
+  .feats { display: grid; gap: 24px; margin-bottom: 40px; }
+  .feat { padding-left: 22px; border-left: 3px solid var(--enk-green); }
+  .feat h3 { font-size: 17px; margin-bottom: 4px; }
+  .feat p { color: var(--slate); font-size: 17px; max-width: 50ch; }
+  .status { margin-top: 16px; font-size: 15px; color: var(--slate); }
+
+  .preview { background: var(--paper); border: 1px solid var(--ink-8); border-top: 6px solid var(--enk-green); border-radius: 4px; padding: 30px; font-size: 15px; }
+  .pv-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+  .pv-role { font-family: "Sora", Arial, sans-serif; font-weight: 600; font-size: 19px; line-height: 1.3; }
+  .pv-meta { color: var(--slate); font-size: 14px; margin-top: 2px; }
+  .pv-badge { flex: none; background: var(--enk-coral); color: var(--ink); font-weight: 600; font-size: 13px; padding: 5px 11px; border-radius: 20px; white-space: nowrap; }
+  .score { display: grid; grid-template-columns: 160px 1fr 32px; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .score .lbl { color: var(--slate); font-size: 14px; }
+  .bar { height: 8px; background: var(--ink-4); border-radius: 4px; overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--enk-green); border-radius: 4px; }
+  .score .val { font-family: "Sora", Arial, sans-serif; font-weight: 600; font-size: 14px; text-align: right; }
+  .pv-why { margin: 22px 0 20px; padding: 14px 16px; background: var(--ink-4); border-left: 3px solid var(--enk-coral); font-size: 14px; line-height: 1.5; }
+  .pv-label { font-size: 13px; color: var(--slate); margin-bottom: 8px; }
+  .pv-claim { border: 1px solid var(--ink-8); border-radius: 4px; padding: 12px 14px; font-size: 14px; line-height: 1.5; }
+  .pv-src { display: flex; align-items: center; gap: 7px; margin-top: 8px; font-size: 13px; font-weight: 500; }
+  .pv-src::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--enk-green); flex: none; }
+  .pv-caption { text-align: right; font-size: 13px; color: var(--slate); margin-top: 12px; }
+
+  /* ---------- Principles: laid as one course of stone ---------- */
+  .course-row { display: flex; gap: 8px; background: var(--ink-8); padding: 8px; }
+  .stone { background: var(--ink-4); padding: 36px 32px 40px; }
+  .stone:nth-child(1) { flex: 3.3; }
+  .stone:nth-child(2) { flex: 2.6; background: var(--ink); color: var(--paper); }
+  .stone:nth-child(3) { flex: 2.9; }
+  .stone h3 { font-size: 21px; margin-bottom: 12px; letter-spacing: -0.2px; }
+  .stone p { color: var(--slate); font-size: 17px; }
+  .stone:nth-child(2) p { color: var(--slate-rev); }
+
+  /* ---------- Partners ---------- */
+  .partners { display: grid; grid-template-columns: .85fr 1.15fr; gap: 72px; align-items: start; }
+  .plist { border-top: 2px solid var(--ink); }
+  .pitem { display: grid; grid-template-columns: 230px 1fr; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--ink-8); }
+  .pitem h3 { font-size: 18px; }
+  .pitem p { color: var(--slate); font-size: 17px; }
+
+  /* ---------- Founder ---------- */
+  .founder { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .fd-name { font-family: "Sora", Arial, sans-serif; font-weight: 600; font-size: 24px; margin: 34px 0 4px; }
+  .fd-role { color: var(--slate); margin-bottom: 18px; }
+  .fd-bio { max-width: 50ch; }
+  .tl { list-style: none; margin: 0; padding: 0; position: relative; }
+  .tl::before { content: ""; position: absolute; left: 7px; top: 10px; bottom: 10px; width: 2px; background: var(--ink-8); }
+  .tl li { position: relative; padding: 0 0 34px 42px; }
+  .tl li:last-child { padding-bottom: 0; }
+  .tl li::before { content: ""; position: absolute; left: 0; top: 7px; width: 16px; height: 12px; background: var(--ink); }
+  .tl li:last-child::before { background: var(--mineral); }
+  .tl .yr { font-family: "Sora", Arial, sans-serif; font-weight: 600; font-size: 15px; color: var(--slate); margin-bottom: 4px; }
+  .tl h4 { font-size: 18px; margin-bottom: 4px; }
+  .tl p { color: var(--slate); font-size: 17px; }
+
+  /* ---------- Contact + footer (reversed surface) ---------- */
+  .dark { background: var(--ink); color: var(--paper); }
+  .contact { display: grid; grid-template-columns: 1.1fr .9fr; gap: 64px; align-items: end; padding-top: 104px; padding-bottom: 88px; }
+  .contact h2 { font-size: clamp(32px, 4.2vw, 50px); line-height: 1.08; letter-spacing: -1.2px; margin-bottom: 20px; max-width: 18ch; }
+  .contact p { color: var(--slate-rev); max-width: 46ch; }
+  .ct-card { border-top: 2px solid var(--mineral); padding-top: 22px; }
+  .ct-mail { font-family: "Sora", Arial, sans-serif; font-weight: 600; font-size: clamp(22px, 2.4vw, 28px); text-decoration: none; color: var(--paper); }
+  .ct-mail:hover { text-decoration: underline; text-underline-offset: 6px; }
+  .ct-card p { margin-top: 10px; font-size: 16px; }
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding-top: 30px; padding-bottom: 36px; border-top: 1px solid rgba(255,255,255,.12); font-size: 15px; color: var(--slate-rev); }
+  .foot-legal { display: block; font-size: 14px; margin-top: 2px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    .hero, .enk, .partners, .founder, .contact { grid-template-columns: 1fr; }
+    .hero { padding-top: 72px; padding-bottom: 88px; }
+    .enk, .founder { gap: 56px; }
+    .partners { gap: 8px; }
+    .course-row { flex-direction: column; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    .hero { padding-top: 48px; padding-bottom: 72px; }
+    .wrap { padding-left: 16px; padding-right: 16px; }
+    body { font-size: 17px; }
+    .hero .lead { font-size: 18px; }
+    .section { padding: 80px 0; }
+    .pitem { grid-template-columns: 1fr; gap: 6px; }
+    .score { grid-template-columns: 1fr 32px; }
+    .score .lbl { grid-column: 1 / 3; }
+    .preview { padding: 20px; }
+    .nav { height: 72px; }
+    .lockup-mark { width: 32px; height: 32px; }
+    .lockup-name { font-size: 19px; }
+    .lockup-desc { font-size: 7.5px; letter-spacing: 1.8px; }
+    .contact { padding-top: 80px; padding-bottom: 64px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-bar">
+  <div class="wrap nav">
+    <a class="lockup" href="#inicio" aria-label="Ashlar Cognitive Systems">
+      <svg class="lockup-mark" viewBox="64 64 384 384" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g><polygon points="64.00,64.00 248.50,64.00 199.75,184.00 64.00,184.00" fill="#1F2328"/><polygon points="263.50,64.00 448.00,64.00 448.00,184.00 312.25,184.00" fill="#1F2328"/></g><polygon points="256.00,82.46 297.25,184.00 214.75,184.00" fill="#3D8FB8"/><g><polygon points="64.00,196.00 194.88,196.00 146.12,316.00 64.00,316.00" fill="#1F2328"/><polygon points="317.12,196.00 448.00,196.00 448.00,316.00 365.88,316.00" fill="#1F2328"/><polygon points="209.88,196.00 302.12,196.00 350.88,316.00 161.12,316.00" fill="#1F2328"/></g><g><polygon points="64.00,328.00 141.25,328.00 92.50,448.00 64.00,448.00" fill="#1F2328"/><polygon points="370.75,328.00 448.00,328.00 448.00,448.00 419.50,448.00" fill="#1F2328"/><polygon points="156.25,328.00 355.75,328.00 404.50,448.00 107.50,448.00" fill="#1F2328"/></g></svg>
+      <span class="lockup-text"><span class="lockup-name">Ashlar</span><span class="lockup-desc">COGNITIVE SYSTEMS</span></span>
+    </a>
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="#enkaja" data-i18n="nav_enkaja">Enkaja</a>
+        <a href="#como-trabajamos" data-i18n="nav_approach">Cómo trabajamos</a>
+        <a href="#fundador" data-i18n="nav_founder">Fundador</a>
+        <a href="#contacto" data-i18n="nav_contact">Contacto</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang_label">
+        <button type="button" data-lang="es" aria-pressed="true" lang="es">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+<section class="wrap hero" id="inicio">
+  <div>
+    <h1 data-i18n="hero_h1">Productos de IA construidos para soportar carga.</h1>
+    <p class="lead" data-i18n="hero_lead">Ashlar es una empresa mexicana de software. Diseñamos, construimos y operamos productos de inteligencia artificial que funcionan en producción desde el primer día, no solo en una demostración.</p>
+    <div class="actions">
+      <a class="btn btn-solid" href="#enkaja" data-i18n="hero_cta1">Conoce Enkaja</a>
+      <a class="btn btn-line" href="#contacto" data-i18n="hero_cta2">Escríbenos</a>
+    </div>
+  </div>
+</section>
+
+<section class="section tint" id="enkaja">
+  <div class="wrap enk">
+    <div>
+      <div class="enk-name">Enkaja</div>
+      <p class="enk-by" data-i18n="enk_by">Un producto de Ashlar</p>
+      <h2 data-i18n="enk_h2">Encuentra los empleos que de verdad puedes ganar.</h2>
+      <p class="body" data-i18n="enk_body">La mayoría de las bolsas de trabajo ordenan vacantes por coincidencia de palabras clave. Enkaja lee tu experiencia real, califica cada vacante en tres ejes por separado y prepara tu postulación con afirmaciones que siempre se pueden rastrear hasta algo que hiciste.</p>
+      <div class="feats">
+        <div class="feat"><h3 data-i18n="enk_f1_h">Tres calificaciones, no una</h3><p data-i18n="enk_f1_p">El encaje con el puesto, la posibilidad de ganarlo y el valor para tu carrera se miden por separado. Así distingues una vacante realista de una apuesta.</p></div>
+        <div class="feat"><h3 data-i18n="enk_f2_h">Un CV que no inventa</h3><p data-i18n="enk_f2_p">Cada línea del CV adaptado cita la experiencia de la que viene. Nada se agrega solo para coincidir con la vacante.</p></div>
+        <div class="feat"><h3 data-i18n="enk_f3_h">Hecho para México</h3><p data-i18n="enk_f3_p">Diseñado primero en español, alrededor de cómo se contrata en el mercado laboral mexicano.</p></div>
+      </div>
+      <a class="btn btn-solid" href="mailto:roberto@ashlar.mx?subject=Acceso%20anticipado%20a%20Enkaja" data-i18n="enk_cta" data-i18n-attr="href:enk_mail">Solicitar acceso anticipado</a>
+      <p class="status" data-i18n="enk_status">Enkaja está en desarrollo privado. El acceso anticipado se abrirá por etapas.</p>
+    </div>
+    <div>
+      <div class="preview" lang="es" role="img" aria-label="Vista de una vacante en Enkaja con tres calificaciones y una línea de CV con su fuente">
+        <div class="pv-head">
+          <div><div class="pv-role">Analista de Datos Sr.</div><div class="pv-meta">Retail, Monterrey, híbrido</div></div>
+          <span class="pv-badge">Buena apuesta</span>
+        </div>
+        <div class="score"><span class="lbl">Encaje con el puesto</span><div class="bar"><i style="width:86%"></i></div><span class="val">86</span></div>
+        <div class="score"><span class="lbl">Posibilidad de ganar</span><div class="bar"><i style="width:72%"></i></div><span class="val">72</span></div>
+        <div class="score"><span class="lbl">Valor para tu carrera</span><div class="bar"><i style="width:64%"></i></div><span class="val">64</span></div>
+        <p class="pv-why">Cumples 7 de 9 requisitos. Tu experiencia con tableros de ventas es poco común entre quienes se postulan a este puesto.</p>
+        <p class="pv-label">Línea sugerida para tu CV</p>
+        <div class="pv-claim">Automaticé el reporte semanal de ventas de 40 tiendas y reduje su preparación de dos días a dos horas.
+          <div class="pv-src">Fuente: tu experiencia en Comercializadora del Norte, 2023</div>
+        </div>
+      </div>
+      <p class="pv-caption" data-i18n="enk_caption">Vista ilustrativa con datos de ejemplo</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="como-trabajamos">
+  <div class="wrap">
+    <h2 class="h2" data-i18n="ap_h2">Cómo construimos</h2>
+    <p class="intro" data-i18n="ap_intro">Mucha de la IA que impresiona en una demostración falla en silencio en producción. Tres reglas mantienen nuestros sistemas del lado correcto de esa línea.</p>
+    <div class="course-row">
+      <div class="stone"><h3 data-i18n="ap1_h">Siempre con fuentes</h3><p data-i18n="ap1_p">Cada respuesta de nuestros sistemas debe poder rastrearse hasta una fuente. Cuando la evidencia no existe, el sistema lo dice en lugar de adivinar.</p></div>
+      <div class="stone"><h3 data-i18n="ap2_h">Producción desde el primer día</h3><p data-i18n="ap2_p">La evaluación, el monitoreo y el control de costos son parte de la arquitectura, no una fase que llega después.</p></div>
+      <div class="stone"><h3 data-i18n="ap3_h">Validar antes de escalar</h3><p data-i18n="ap3_p">Comprobamos que usuarios reales quieren algo antes de construir la infraestructura para atender a miles.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section tint">
+  <div class="wrap partners">
+    <div>
+      <h2 class="h2" data-i18n="pt_h2">Proyectos con socios</h2>
+      <p class="intro" data-i18n="pt_intro">Además de nuestros productos, tomamos pocos proyectos de ingeniería al año con empresas que necesitan que la IA funcione en producción.</p>
+    </div>
+    <div class="plist">
+      <div class="pitem"><h3 data-i18n="pt1_h">Flujos con agentes</h3><p data-i18n="pt1_p">Agentes de varios pasos que planean, usan herramientas y pasan el control a una persona en el momento correcto.</p></div>
+      <div class="pitem"><h3 data-i18n="pt2_h">Procesamiento de documentos</h3><p data-i18n="pt2_p">Extracción y validación de facturas, tickets, contratos y formularios.</p></div>
+      <div class="pitem"><h3 data-i18n="pt3_h">Asistentes conversacionales</h3><p data-i18n="pt3_p">Asistentes que resuelven solicitudes reales de clientes a escala, en español e inglés.</p></div>
+      <div class="pitem"><h3 data-i18n="pt4_h">Búsqueda con fuentes</h3><p data-i18n="pt4_p">Respuestas con citas sobre los documentos y datos de la propia empresa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="fundador">
+  <div class="wrap founder">
+    <div>
+      <h2 class="h2" data-i18n="fd_h2">Quién está detrás de Ashlar</h2>
+      <p class="fd-name">Roberto Castañeda Ascencio</p>
+      <p class="fd-role" data-i18n="fd_role">Fundador y director general</p>
+      <p class="fd-bio" data-i18n="fd_bio">Roberto es líder de producto y arquitecto de IA. Lleva ocho años llevando la automatización inteligente del prototipo a producción, primero en la banca y después en productos globales de datos. Tiene un MBA y es ingeniero en mecatrónica. Fundó Ashlar para construir productos de IA con ese mismo estándar.</p>
+    </div>
+    <ol class="tl">
+      <li><div class="yr">2018</div><h4 data-i18n="tl1_h">El primer asistente inteligente de la banca en México</h4><p data-i18n="tl1_p">Diseñó la arquitectura del asistente de uno de los bancos más grandes del país y lo escaló a más de 90,000 conversaciones al mes.</p></li>
+      <li><div class="yr">2020</div><h4 data-i18n="tl2_h">Automatización cognitiva en Latinoamérica</h4><p data-i18n="tl2_p">Dirigió la arquitectura de automatización robótica de procesos y procesamiento inteligente de documentos para un grupo financiero global en la región.</p></li>
+      <li><div class="yr">2021</div><h4 data-i18n="tl3_h">Productos globales de datos e IA</h4><p data-i18n="tl3_p">Liderazgo de producto en plataformas de datos e IA con agentes para una empresa multinacional de inteligencia de mercado.</p></li>
+      <li><div class="yr">2026</div><h4 data-i18n="tl4_h">Funda Ashlar</h4><p data-i18n="tl4_p">Empieza a construir Enkaja y sistemas de IA para socios, desde México.</p></li>
+    </ol>
+  </div>
+</section>
+</main>
+
+<footer class="dark" id="contacto">
+  <div class="wrap contact">
+    <div>
+      <h2 data-i18n="ct_h2">¿Tienes algo que debe funcionar en producción?</h2>
+      <p data-i18n="ct_p">Escríbenos sobre un proyecto, una alianza o acceso anticipado a Enkaja. Respondemos en un máximo de dos días hábiles.</p>
+    </div>
+    <div class="ct-card">
+      <a class="ct-mail" href="mailto:roberto@ashlar.mx">roberto@ashlar.mx</a>
+      <p data-i18n="ct_loc">Naucalpan de Juárez, Estado de México</p>
+    </div>
+  </div>
+  <div class="wrap foot">
+    <a class="lockup rev" href="#inicio" aria-label="Ashlar Cognitive Systems">
+      <svg class="lockup-mark" viewBox="64 64 384 384" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g><polygon points="64.00,64.00 248.50,64.00 199.75,184.00 64.00,184.00" fill="#FFFFFF"/><polygon points="263.50,64.00 448.00,64.00 448.00,184.00 312.25,184.00" fill="#FFFFFF"/></g><polygon points="256.00,82.46 297.25,184.00 214.75,184.00" fill="#3D8FB8"/><g><polygon points="64.00,196.00 194.88,196.00 146.12,316.00 64.00,316.00" fill="#FFFFFF"/><polygon points="317.12,196.00 448.00,196.00 448.00,316.00 365.88,316.00" fill="#FFFFFF"/><polygon points="209.88,196.00 302.12,196.00 350.88,316.00 161.12,316.00" fill="#FFFFFF"/></g><g><polygon points="64.00,328.00 141.25,328.00 92.50,448.00 64.00,448.00" fill="#FFFFFF"/><polygon points="370.75,328.00 448.00,328.00 448.00,448.00 419.50,448.00" fill="#FFFFFF"/><polygon points="156.25,328.00 355.75,328.00 404.50,448.00 107.50,448.00" fill="#FFFFFF"/></g></svg>
+      <span class="lockup-text"><span class="lockup-name">Ashlar</span><span class="lockup-desc">COGNITIVE SYSTEMS</span></span>
+    </a>
+    <div style="text-align:right">
+      <span>Ashlar Cognitive Systems, S.A.S. de C.V.</span>
+      <span class="foot-legal" data-i18n="ft_note">Sociedad mexicana constituida. © 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var I18N = {"es": {"meta_title": "Ashlar — Productos de IA hechos para producción", "meta_desc": "Ashlar es una empresa mexicana de software que diseña, construye y opera productos de inteligencia artificial. Creadores de Enkaja.", "nav_enkaja": "Enkaja", "nav_approach": "Cómo trabajamos", "nav_founder": "Fundador", "nav_contact": "Contacto", "lang_label": "Idioma", "hero_h1": "Productos de IA construidos para soportar carga.", "hero_lead": "Ashlar es una empresa mexicana de software. Diseñamos, construimos y operamos productos de inteligencia artificial que funcionan en producción desde el primer día, no solo en una demostración.", "hero_cta1": "Conoce Enkaja", "hero_cta2": "Escríbenos", "enk_by": "Un producto de Ashlar", "enk_h2": "Encuentra los empleos que de verdad puedes ganar.", "enk_body": "La mayoría de las bolsas de trabajo ordenan vacantes por coincidencia de palabras clave. Enkaja lee tu experiencia real, califica cada vacante en tres ejes por separado y prepara tu postulación con afirmaciones que siempre se pueden rastrear hasta algo que hiciste.", "enk_f1_h": "Tres calificaciones, no una", "enk_f1_p": "El encaje con el puesto, la posibilidad de ganarlo y el valor para tu carrera se miden por separado. Así distingues una vacante realista de una apuesta.", "enk_f2_h": "Un CV que no inventa", "enk_f2_p": "Cada línea del CV adaptado cita la experiencia de la que viene. Nada se agrega solo para coincidir con la vacante.", "enk_f3_h": "Hecho para México", "enk_f3_p": "Diseñado primero en español, alrededor de cómo se contrata en el mercado laboral mexicano.", "enk_cta": "Solicitar acceso anticipado", "enk_status": "Enkaja está en desarrollo privado. El acceso anticipado se abrirá por etapas.", "enk_caption": "Vista ilustrativa con datos de ejemplo", "enk_mail": "mailto:roberto@ashlar.mx?subject=Acceso%20anticipado%20a%20Enkaja", "ap_h2": "Cómo construimos", "ap_intro": "Mucha de la IA que impresiona en una demostración falla en silencio en producción. Tres reglas mantienen nuestros sistemas del lado correcto de esa línea.", "ap1_h": "Siempre con fuentes", "ap1_p": "Cada respuesta de nuestros sistemas debe poder rastrearse hasta una fuente. Cuando la evidencia no existe, el sistema lo dice en lugar de adivinar.", "ap2_h": "Producción desde el primer día", "ap2_p": "La evaluación, el monitoreo y el control de costos son parte de la arquitectura, no una fase que llega después.", "ap3_h": "Validar antes de escalar", "ap3_p": "Comprobamos que usuarios reales quieren algo antes de construir la infraestructura para atender a miles.", "pt_h2": "Proyectos con socios", "pt_intro": "Además de nuestros productos, tomamos pocos proyectos de ingeniería al año con empresas que necesitan que la IA funcione en producción.", "pt1_h": "Flujos con agentes", "pt1_p": "Agentes de varios pasos que planean, usan herramientas y pasan el control a una persona en el momento correcto.", "pt2_h": "Procesamiento de documentos", "pt2_p": "Extracción y validación de facturas, tickets, contratos y formularios.", "pt3_h": "Asistentes conversacionales", "pt3_p": "Asistentes que resuelven solicitudes reales de clientes a escala, en español e inglés.", "pt4_h": "Búsqueda con fuentes", "pt4_p": "Respuestas con citas sobre los documentos y datos de la propia empresa.", "fd_h2": "Quién está detrás de Ashlar", "fd_role": "Fundador y director general", "fd_bio": "Roberto es líder de producto y arquitecto de IA. Lleva ocho años llevando la automatización inteligente del prototipo a producción, primero en la banca y después en productos globales de datos. Tiene un MBA y es ingeniero en mecatrónica. Fundó Ashlar para construir productos de IA con ese mismo estándar.", "tl1_h": "El primer asistente inteligente de la banca en México", "tl1_p": "Diseñó la arquitectura del asistente de uno de los bancos más grandes del país y lo escaló a más de 90,000 conversaciones al mes.", "tl2_h": "Automatización cognitiva en Latinoamérica", "tl2_p": "Dirigió la arquitectura de automatización robótica de procesos y procesamiento inteligente de documentos para un grupo financiero global en la región.", "tl3_h": "Productos globales de datos e IA", "tl3_p": "Liderazgo de producto en plataformas de datos e IA con agentes para una empresa multinacional de inteligencia de mercado.", "tl4_h": "Funda Ashlar", "tl4_p": "Empieza a construir Enkaja y sistemas de IA para socios, desde México.", "ct_h2": "¿Tienes algo que debe funcionar en producción?", "ct_p": "Escríbenos sobre un proyecto, una alianza o acceso anticipado a Enkaja. Respondemos en un máximo de dos días hábiles.", "ct_loc": "Naucalpan de Juárez, Estado de México", "ft_note": "Sociedad mexicana constituida. © 2026"}, "en": {"meta_title": "Ashlar — AI products built for production", "meta_desc": "Ashlar is a Mexican software company that designs, builds and operates AI products. Makers of Enkaja.", "nav_enkaja": "Enkaja", "nav_approach": "How we work", "nav_founder": "Founder", "nav_contact": "Contact", "lang_label": "Language", "hero_h1": "AI products built to bear weight.", "hero_lead": "Ashlar is a Mexican software company. We design, build and operate AI products that run in production from the first day, not only in a demo.", "hero_cta1": "See Enkaja", "hero_cta2": "Get in touch", "enk_by": "An Ashlar product", "enk_h2": "Find the jobs you can actually win.", "enk_body": "Most job boards rank openings by keyword overlap. Enkaja reads a candidate's real experience, scores every opening on three separate axes and prepares an application in which each claim traces back to something the candidate actually did.", "enk_f1_h": "Three scores, not one", "enk_f1_p": "Fit, chance of winning and career value are scored separately, so a candidate can tell a realistic opening from a long shot.", "enk_f2_h": "A CV that invents nothing", "enk_f2_p": "Every line of a tailored CV cites the experience it comes from. Nothing is added just to match the posting.", "enk_f3_h": "Built for Mexico", "enk_f3_p": "Designed in Spanish first, around how hiring actually works in the Mexican job market.", "enk_cta": "Request early access", "enk_status": "Enkaja is in private development. Early access will open in stages.", "enk_caption": "Illustrative preview with sample data", "enk_mail": "mailto:roberto@ashlar.mx?subject=Enkaja%20early%20access", "ap_h2": "How we build", "ap_intro": "A lot of AI that impresses in a demo fails quietly in production. Three rules keep our systems on the right side of that line.", "ap1_h": "Grounded by design", "ap1_p": "Every answer our systems give should trace back to a source. When the evidence is not there, the system says so instead of guessing.", "ap2_h": "Production from day one", "ap2_p": "Evaluation, monitoring and cost control are part of the architecture, not a phase that comes later.", "ap3_h": "Validate before scaling", "ap3_p": "We prove that real users want something before we build the infrastructure to serve thousands of them.", "pt_h2": "Building with partners", "pt_intro": "Beyond our own products, we take on a small number of engineering projects each year with companies that need AI to work in production.", "pt1_h": "Agentic workflows", "pt1_p": "Multi-step agents that plan, use tools and hand control to a person at the right moment.", "pt2_h": "Document intelligence", "pt2_p": "Extraction and validation for invoices, receipts, contracts and forms.", "pt3_h": "Conversational assistants", "pt3_p": "Assistants that resolve real customer requests at scale, in Spanish and English.", "pt4_h": "Retrieval and search", "pt4_p": "Cited answers over a company's own documents and data.", "fd_h2": "Who is behind Ashlar", "fd_role": "Founder and CEO", "fd_bio": "Roberto is a product leader and AI architect who has spent eight years taking intelligent automation from prototype to production, first in banking and then in global data products. He holds an MBA and a degree in mechatronics engineering, and founded Ashlar to build AI products held to the same standard.", "tl1_h": "Mexico's first smart assistant in banking", "tl1_p": "Architected the assistant for one of the country's largest banks and scaled it to more than 90,000 conversations a month.", "tl2_h": "Cognitive automation across Latin America", "tl2_p": "Led robotic process automation and intelligent document processing architecture for a global financial group across the region.", "tl3_h": "Global data and AI products", "tl3_p": "Product leadership in data platforms and agentic AI for a multinational market-intelligence company.", "tl4_h": "Founded Ashlar", "tl4_p": "Started building Enkaja and AI systems for partners, from Mexico.", "ct_h2": "Have something that needs to hold up in production?", "ct_p": "Write to us about a project, a partnership or early access to Enkaja. We reply within two business days.", "ct_loc": "Naucalpan de Juárez, State of Mexico", "ft_note": "A registered Mexican company. © 2026"}};
+  function apply(lang) {
+    if (!I18N[lang]) lang = "es";
+    var d = I18N[lang];
+    document.documentElement.lang = lang;
+    document.title = d.meta_title;
+    var md = document.querySelector('meta[name="description"]');
+    if (md) md.setAttribute("content", d.meta_desc);
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var v = d[el.getAttribute("data-i18n")];
+      if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll("[data-i18n-attr]").forEach(function (el) {
+      el.getAttribute("data-i18n-attr").split(";").forEach(function (pair) {
+        var p = pair.split(":"); var v = d[p[1]];
+        if (v != null) el.setAttribute(p[0], v);
+      });
+    });
+    document.querySelectorAll(".lang button").forEach(function (b) {
+      b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
+    });
+  }
+  var lang = "es";
+  try {
+    var q = new URLSearchParams(location.search).get("lang");
+    var saved = localStorage.getItem("ashlar-lang");
+    if (q === "en" || q === "es") lang = q; else if (saved) lang = saved;
+  } catch (e) {}
+  if (lang !== "es") apply(lang);
+  document.querySelectorAll(".lang button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var l = b.getAttribute("data-lang");
+      apply(l);
+      try { localStorage.setItem("ashlar-lang", l); } catch (e) {}
+    });
+  });
+})();
+</script>
+</body>
+</html>
